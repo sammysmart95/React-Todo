@@ -9,19 +9,22 @@ const App = () => {
     {
       text: "Introductin to JavaScript",
       isCompleted: false,
+      id: Math.random(),
     },
     {
       text: "Advance JavaScript",
       isCompleted: false,
+      id: Math.random(),
     },
     {
       text: "Introduction to React",
       isCompleted: false,
+      id: Math.random(),
     },
   ]);
 
   const addTodo = (text) => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [{ text }, ...todos];
     setTodos(newTodos);
   };
 
@@ -33,6 +36,7 @@ const App = () => {
 
   const removeTodo = (index) => {
     const newTodos = [...todos];
+    // newTodos.filter((todo) => todo.id !== id);
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
@@ -43,6 +47,7 @@ const App = () => {
         <TodoForm addTodo={addTodo} />
         {todos.map((todo, index) => (
           <Todo
+            id={todo.id}
             key={index}
             index={index}
             todo={todo}

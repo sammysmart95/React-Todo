@@ -9,17 +9,14 @@ const App = () => {
     {
       text: "Introductin to JavaScript",
       isCompleted: false,
-      id: Math.random(),
     },
     {
       text: "Advance JavaScript",
       isCompleted: false,
-      id: Math.random(),
     },
     {
       text: "Introduction to React",
       isCompleted: false,
-      id: Math.random(),
     },
   ]);
 
@@ -34,11 +31,11 @@ const App = () => {
     setTodos(newTodos);
   };
 
-  const removeTodo = (index) => {
+  const removeTodo = (todoIndex) => {
     const newTodos = [...todos];
-    // newTodos.filter((todo) => todo.id !== id);
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+    const filteredTodos = newTodos.filter((todo, index) => index !== todoIndex);
+    // newTodos.splice(index, 1);
+    setTodos(filteredTodos);
   };
   return (
     <div className="App">
@@ -47,7 +44,6 @@ const App = () => {
         <TodoForm addTodo={addTodo} />
         {todos.map((todo, index) => (
           <Todo
-            id={todo.id}
             key={index}
             index={index}
             todo={todo}
